@@ -1,4 +1,4 @@
-CREATE TABLE IF NO EXIST users(
+CREATE TABLE IF NOT EXISTS users(
     chat_id BIGINT PRIMARY KEY,
     username VARCHAR(255),
     first_name VARCHAR(255),

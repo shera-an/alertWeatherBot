@@ -12,7 +12,7 @@ public class UserService {
         String sql = "INSERT INTO users (chat_id, username, first_name, city, registered_at) VALUES (?, ?, ?, ?, ?)";
         try(Connection conn = DatabaseConfig.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setLong(1,user.getChatId());
+            stmt.setString(1,user.getChatId());
             stmt.setString(2, user.getUserName());
             stmt.setString(3, user.getFirstName());
             stmt.setString(4, user.getCity());
@@ -21,16 +21,16 @@ public class UserService {
             stmt.executeUpdate();
         }
     }
-    public User getUser(Long chatId) throws SQLException{
+    public User getUser(String chatId) throws SQLException{
         String sql = "SELECT * FROM users WHERE chat_id = ?";
         try(Connection conn = DatabaseConfig.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setLong(1,chatId);
+            stmt.setString(1,chatId);
             ResultSet rs = stmt.executeQuery();
 
             if(rs.next()){
                 return  new User(
-                        rs.getLong("chat_id"),
+                        rs.getString("chat_id"),
                         rs.getString("username"),
                         rs.getString("first_name"),
                         rs.getString("city"),
@@ -40,18 +40,18 @@ public class UserService {
             return null;
         }
     }
-    public void updateCity(Long chatId, String city) throws SQLException{
+    public void updateCity(String chatId, String city) throws SQLException{
         String sql = "UPDATE users SET city = ? WHERE chat_id = ?";
 
         try(Connection conn = DatabaseConfig.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1,city);
-            stmt.setLong(2,chatId);
+            stmt.setString(2,chatId);
             stmt.executeUpdate();
         }
 
     }
-    public boolean userExists(Long chatId) throws SQLException{
+    public boolean userExists(String chatId) throws SQLException{
         return getUser(chatId) != null;
     }
 }

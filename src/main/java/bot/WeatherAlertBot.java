@@ -15,7 +15,7 @@ import java.util.Map;
 public class WeatherAlertBot extends TelegramLongPollingBot {
     private final UserService userService = new UserService();
     //Храним состояние диалога с каждым пользователем
-    private final Map<Long, String> userStates = new HashMap<>();
+    private final Map<String, String> userStates = new HashMap<>();
 
 
     //Токен передаем в конструктор
@@ -31,47 +31,52 @@ public class WeatherAlertBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update){
         if(update.hasMessage() && update.getMessage().hasText()){
             String chatIdStr = update.getMessage().getChatId().toString();
-            Long ctaId = update.getMessage().getChatId();
             String text = update.getMessage().getText();
 
             try {
                 // Проверяем есть ли полльзователь
-                User user = userService.getUser(ctaId);
-                String state = userStates.get(ctaId);
+                User user = userService.getUser(chatIdStr);
+                String state = userStates.get(chatIdStr);
 
                 //Если комнда /start
                 if(text.equals("/start")){
                     if(user != null){
                         sendMessage(chatIdStr,"✅ Вы уже зарегистрированы, " + user.getFirstName() + "!");
                     }else{
-                        userStates.put(ctaId, "AWAITING_NAME");
+                        userStates.put(chatIdStr, "AWAITING_NAME");
                         sendMessage(chatIdStr,"👋 Привет! Как тебя зовут?");
                     }
-                    return;
-                    }
-                if(user == null){
-                    sendMessage(chatIdStr, "❌ Пожалуйста, сначала отправь /start для регистрации.");
                     return;
                 }
                 //обработка диалога регистрации
                 if("AWAITING_NAME".equals(state)){
-                    userStates.put(ctaId,"AWAITING_CITY");
-                    user.setFirstName(text);
+                    userStates.put(chatIdStr,"AWAITING_CITY");
+                    userStates.put(chatIdStr + "_name", text);
                     sendMessage(chatIdStr,"Отлично, " + text + "! Из какого ты города?");
                     return;
                 }
                 if("AWAITING_CITY".equals(state)){
-                    user.setCity(text);
-                    user.setUserName(update.getMessage().getFrom().getUserName());
-                    user.setRegisteredAt(LocalDateTime.now());
+                    User newUser = new User(
+                            chatIdStr,
+                            update.getMessage().getFrom().getUserName(),
+                            userStates.get(chatIdStr + "_name"),
+                            text,
+                            LocalDateTime.now()
+                    );
 
-                    userService.saveUser(user);
-                    userStates.remove(ctaId);
+
+                    userService.saveUser(newUser);
+                    userStates.remove(chatIdStr);
+                    userStates.remove(chatIdStr + "_name");
 
                     sendMessage(chatIdStr, "✅ Регистрация завершена! Твой город: " + text +
                             "\nТеперь я буду присылать тебе погоду. Используй /weather, чтобы узнать прогноз.");
                     return;
                 }
+            if(user == null) {
+                sendMessage(chatIdStr, "❌ Пожалуйста, сначала отправь /start для регистрации.");
+                return;
+            }
                 //обычые команды
                 if(text.equals("/weather")){
                     String city = user.getCity();

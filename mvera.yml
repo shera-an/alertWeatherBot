@@ -1,0 +1,10 @@
+meta:
+  environment: jvm
+  toolchain:
+    name: maven
+    version: 17
+
+run:
+  jarName: target/alert-weather-bot-1.0-SNAPSHOT.jar
+  containerPort: 80
+  command: java -jar alert-weather-bot-1.0-SNAPSHOT.jar

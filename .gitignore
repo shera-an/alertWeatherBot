@@ -12,6 +12,8 @@ target/
 *.iws
 *.iml
 *.ipr
+openmeteo.properties
+ygeocode.properties
 bot.properties
 db.properties
 ### Eclipse ###

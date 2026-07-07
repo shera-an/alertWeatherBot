@@ -1,12 +1,12 @@
-package service;
+package ru.sheraAn.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import config.OpenMeteoConfig;
-import model.*;
+import ru.sheraAn.config.OpenMeteoConfig;
+import ru.sheraAn.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.interfaces.WeatherService;
+import ru.sheraAn.service.interfaces.WeatherService;
 
 import java.io.IOException;
 import java.net.URI;

@@ -1,6 +1,6 @@
-package service.interfaces;
+package ru.sheraAn.service.interfaces;
 
-import model.WeatherResponse;
+import ru.sheraAn.model.WeatherResponse;
 
 public interface MessageService {
 

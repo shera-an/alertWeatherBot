@@ -1,11 +1,11 @@
-package service;
+package ru.sheraAn.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import config.YandexGeocoderConfig;
+import ru.sheraAn.config.YandexGeocoderConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.interfaces.GeocoderService;
+import ru.sheraAn.service.interfaces.GeocoderService;
 
 import java.io.IOException;
 import java.net.URI;
@@ -67,7 +67,7 @@ public class YandexGeocoderService implements GeocoderService {
         try {
             String url = String.format(
                     "https://geocode-maps.yandex.ru/v1?apikey=%s&geocode=%s,%s&format=json",
-                    config.YandexGeocoderConfig.getYgeocoderKey(),
+                    ru.sheraAn.config.YandexGeocoderConfig.getYgeocoderKey(),
                     lon, lat
             );
 

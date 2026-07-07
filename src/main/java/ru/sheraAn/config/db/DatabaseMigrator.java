@@ -1,6 +1,6 @@
-package db;
+package ru.sheraAn.config.db;
 
-import config.DatabaseConfig;
+import ru.sheraAn.config.DatabaseConfig;
 import org.flywaydb.core.Flyway;
 
 public class DatabaseMigrator {

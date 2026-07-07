@@ -1,4 +1,4 @@
-package config;
+package ru.sheraAn.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +15,13 @@ public class BotConfig {
         try (InputStream input = BotConfig.class.getClassLoader()
                 .getResourceAsStream("bot.properties")) {
             if (input == null) {
-                logger.warn("Файл bot.properties не найден, будут использованы только переменные окружения");
+                logger.warn("Файл ru.sheraAn.bot.properties не найден, будут использованы только переменные окружения");
             } else {
                 props.load(input);
-                logger.info("Файл bot.properties успешно загружен");
+                logger.info("Файл ru.sheraAn.bot.properties успешно загружен");
             }
         } catch (Exception e) {
-            logger.error("Ошибка загрузки bot.properties, будут использованы только переменные окружения", e);
+            logger.error("Ошибка загрузки ru.sheraAn.bot.properties, будут использованы только переменные окружения", e);
         }
     }
 
@@ -36,11 +36,11 @@ public class BotConfig {
         // 2. Fallback: читаем из файла (для локальной разработки)
         String fileToken = props.getProperty("tg.bot.token");
         if (fileToken != null && !fileToken.isEmpty()) {
-            logger.debug("Токен бота загружен из bot.properties");
+            logger.debug("Токен бота загружен из ru.sheraAn.bot.properties");
             return fileToken;
         }
 
-        logger.error("Токен бота не найден в переменных окружения или в bot.properties");
+        logger.error("Токен бота не найден в переменных окружения или в ru.sheraAn.bot.properties");
         return null;
     }
 
@@ -51,13 +51,13 @@ public class BotConfig {
             return envName;
         }
 
-        String fileName = props.getProperty("tg.bot.username");
+        String fileName = props.getProperty("tg.ru.sheraAn.bot.username");
         if (fileName != null && !fileName.isEmpty()) {
-            logger.debug("Имя бота загружено из bot.properties: {}", fileName);
+            logger.debug("Имя бота загружено из ru.sheraAn.bot.properties: {}", fileName);
             return fileName;
         }
 
-        logger.error("Имя бота не найдено в переменных окружения или в bot.properties");
+        logger.error("Имя бота не найдено в переменных окружения или в ru.sheraAn.bot.properties");
         return null;
     }
 }

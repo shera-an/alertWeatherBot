@@ -1,4 +1,4 @@
-package config;
+package ru.sheraAn.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +18,13 @@ public class DatabaseConfig {
         try (InputStream input = DatabaseConfig.class.getClassLoader()
                 .getResourceAsStream("db.properties")) {
             if (input == null) {
-                logger.warn("Файл db.properties не найден, будут использованы только переменные окружения");
+                logger.warn("Файл ru.sheraAn.config.db.properties не найден, будут использованы только переменные окружения");
             } else {
                 props.load(input);
-                logger.info("Файл db.properties успешно загружен");
+                logger.info("Файл ru.sheraAn.config.db.properties успешно загружен");
             }
         } catch (Exception e) {
-            logger.error("Ошибка загрузки db.properties, будут использованы только переменные окружения", e);
+            logger.error("Ошибка загрузки ru.sheraAn.config.db.properties, будут использованы только переменные окружения", e);
         }
     }
 
@@ -36,10 +36,10 @@ public class DatabaseConfig {
         }
         String fileUrl = props.getProperty("db.url");
         if (fileUrl != null && !fileUrl.isEmpty()) {
-            logger.debug("URL БД загружен из db.properties");
+            logger.debug("URL БД загружен из ru.sheraAn.config.db.properties");
             return fileUrl;
         }
-        logger.error("URL БД не найден в переменных окружения или в db.properties");
+        logger.error("URL БД не найден в переменных окружения или в ru.sheraAn.config.db.properties");
         return null;
     }
 
@@ -51,10 +51,10 @@ public class DatabaseConfig {
         }
         String fileUser = props.getProperty("db.user");
         if (fileUser != null && !fileUser.isEmpty()) {
-            logger.debug("Пользователь БД загружен из db.properties");
+            logger.debug("Пользователь БД загружен из ru.sheraAn.config.db.properties");
             return fileUser;
         }
-        logger.error("Пользователь БД не найден в переменных окружения или в db.properties");
+        logger.error("Пользователь БД не найден в переменных окружения или в ru.sheraAn.config.db.properties");
         return null;
     }
 
@@ -66,10 +66,10 @@ public class DatabaseConfig {
         }
         String filePassword = props.getProperty("db.password");
         if (filePassword != null && !filePassword.isEmpty()) {
-            logger.debug("Пароль БД загружен из db.properties");
+            logger.debug("Пароль БД загружен из ru.sheraAn.config.db.properties");
             return filePassword;
         }
-        logger.error("Пароль БД не найден в переменных окружения или в db.properties");
+        logger.error("Пароль БД не найден в переменных окружения или в ru.sheraAn.config.db.properties");
         return null;
     }
 

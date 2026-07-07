@@ -1,10 +1,10 @@
-package service;
+package ru.sheraAn.service;
 
-import config.DatabaseConfig;
-import model.User;
+import ru.sheraAn.config.DatabaseConfig;
+import ru.sheraAn.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.interfaces.UserStorage;
+import ru.sheraAn.service.interfaces.UserStorage;
 
 import java.sql.*;
 import java.time.LocalDateTime;

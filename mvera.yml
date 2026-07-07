@@ -5,6 +5,6 @@ meta:
     version: 17
 
 run:
-  jarName: target/alert-weather-bot-1.0-SNAPSHOT.jar
+  jarName: target/alert-weather-ru.sheraAn.bot-1.0-SNAPSHOT.jar
   containerPort: 80
-  command: java -jar alert-weather-bot-1.0-SNAPSHOT.jar
+  command: java -jar alert-weather-ru.sheraAn.bot-1.0-SNAPSHOT.jar

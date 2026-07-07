@@ -1,20 +1,20 @@
 package ru.sheraAn;
 
-import bot.WeatherAlertBot;
-import db.DatabaseMigrator;
+import ru.sheraAn.bot.WeatherAlertBot;
+import ru.sheraAn.config.db.DatabaseMigrator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import service.MessageFormatter;
-import service.OpenMeteoService;
-import service.UserService;
-import service.YandexGeocoderService;
-import service.interfaces.GeocoderService;
-import service.interfaces.MessageService;
-import service.interfaces.UserStorage;
-import service.interfaces.WeatherService;
+import ru.sheraAn.service.MessageFormatter;
+import ru.sheraAn.service.OpenMeteoService;
+import ru.sheraAn.service.UserService;
+import ru.sheraAn.service.YandexGeocoderService;
+import ru.sheraAn.service.interfaces.GeocoderService;
+import ru.sheraAn.service.interfaces.MessageService;
+import ru.sheraAn.service.interfaces.UserStorage;
+import ru.sheraAn.service.interfaces.WeatherService;
 
 public class Main {
     public static void main(String[] args) {

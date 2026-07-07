@@ -1,9 +1,9 @@
-package service;
+package ru.sheraAn.service;
 
-import model.WeatherResponse;
+import ru.sheraAn.model.WeatherResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.interfaces.MessageService;
+import ru.sheraAn.service.interfaces.MessageService;
 
 public class MessageFormatter implements MessageService {
     private final static Logger logger = LoggerFactory.getLogger(MessageFormatter.class);

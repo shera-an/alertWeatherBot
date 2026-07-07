@@ -1,21 +1,21 @@
-package bot;
+package ru.sheraAn.bot;
 
-import model.DailyForecast;
-import model.HourlyForecast;
-import model.User;
-import model.WeatherResponse;
+import ru.sheraAn.model.DailyForecast;
+import ru.sheraAn.model.HourlyForecast;
+import ru.sheraAn.model.User;
+import ru.sheraAn.model.WeatherResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import config.BotConfig;
+import ru.sheraAn.config.BotConfig;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import service.interfaces.GeocoderService;
-import service.interfaces.MessageService;
-import service.interfaces.UserStorage;
-import service.interfaces.WeatherService;
+import ru.sheraAn.service.interfaces.GeocoderService;
+import ru.sheraAn.service.interfaces.MessageService;
+import ru.sheraAn.service.interfaces.UserStorage;
+import ru.sheraAn.service.interfaces.WeatherService;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;

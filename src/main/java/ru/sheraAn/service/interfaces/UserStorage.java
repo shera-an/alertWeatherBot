@@ -1,6 +1,6 @@
-package service.interfaces;
+package ru.sheraAn.service.interfaces;
 
-import model.User;
+import ru.sheraAn.model.User;
 
 import java.sql.SQLException;
 

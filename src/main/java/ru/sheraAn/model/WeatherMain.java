@@ -1,4 +1,4 @@
-package model;
+package ru.sheraAn.model;
 
 public class WeatherMain {
     private double temp;

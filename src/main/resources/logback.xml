@@ -10,9 +10,9 @@
 
     <!-- Файловый вывод (опционально) -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/bot.log</file>
+        <file>logs/ru.sheraAn.bot.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/bot.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/ru.sheraAn.bot.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <encoder>

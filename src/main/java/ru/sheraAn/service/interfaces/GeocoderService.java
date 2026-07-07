@@ -1,4 +1,4 @@
-package service.interfaces;
+package ru.sheraAn.service.interfaces;
 
 import java.io.IOException;
 

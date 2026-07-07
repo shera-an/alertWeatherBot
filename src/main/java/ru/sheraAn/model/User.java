@@ -1,4 +1,4 @@
-package model;
+package ru.sheraAn.model;
 
 import java.time.LocalDateTime;
 
